@@ -1,0 +1,17 @@
+{
+    "titulo": "Título de la página",
+    "subtitulo": "Texto descriptivo.",
+    "contenido": {
+      "parrafo1": "Este párrafo contiene información general sobre la página web.",
+      "lista": [
+        "Elemento 1 de la lista",
+        "Elemento 2 de la lista",
+        "Elemento 3 de la lista"
+      ],
+      "parrafo2": "Este párrafo contiene información adicional sobre la página web.",
+      "boton": {
+        "texto": "Haz clic aquí",
+        "enlace": "https://www.ejemplo.com"
+      }
+    }
+  }
