@@ -71,6 +71,14 @@ function getResults() {
     let amount_Liters = consumption_1km * distance;
     let total_Cost = amount_Liters * gasPrice;
 
+    //Redondear todos los resultados a un máximo de dos decimales.
+    consumption_1km = parseFloat(consumption_1km.toFixed(2));
+    amount_Liters = parseFloat(amount_Liters.toFixed(2));
+    total_Cost = parseFloat(total_Cost.toFixed(2));
+    distance = parseFloat(distance.toFixed(2));
+    consumption = parseFloat(consumption.toFixed(2));
+    gasPrice = parseFloat(gasPrice.toFixed(2));
+
     //Manda a escribir por pantalla los resultados.
     let summary = `El coste total para un viaje de ${distance} kms en tu vehículo asciente a ${total_Cost} €, utilizando un total de ${amount_Liters} litros de gasolina.`;
     alert(summary);
