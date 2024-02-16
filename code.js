@@ -2,32 +2,76 @@
 let getid = (getIt) => document.getElementById(getIt);
 
 
-//Añado el evento al pulsar el botón
-let calculateButton = getid("calculateButton").addEventListener("click", calc_consumption, false);
+//Añado el evento al pulsar los botones
+let calculateButton = getid("calculateButton").addEventListener("click", getResults, false);
+let resetButton = getid("resetButton").addEventListener("click", emptyInputs, false);
 
 
-//
+//Declaro las variables donde almacenaré la información que me interesa.
+let distance = "";
+let gasPrice = "";
+let consumption = "";
 
-function comprobarCampos(){
-    //Comprueba que los campos no están vacíos y tienen información correcta.
+function getValues() { //Atrapar los valores que me interesan.
+
+    distance = getid("distance_Input").value;
+    gasPrice = getid("gas_price_Input").value;
+    consumption = getid("consumption_Input").value;
 }
 
-function calc_consumption(){
-    alert("Working");
-    return;
+function emptyInputs() { //Vacía el formulario.
 
-    //Toma los datos de las variables
-    let distance = getid("distance_Input").value;
-    let gasPrice = getid("gas_price_Input").value;
-    let consumption = getid("consumption_Input").value;
+    getid("distance_Input").value = "";
+    getid("gas_price_Input").value = "";
+    getid("consumption_Input").value = "";
+}
 
-    //Realiza el cálculo
+function field_checker() {//Controla las introducciones del usuario.
+    //Esta función realiza comprobaciones en los Inputs, interrumpiendo calc_consumption si fuese necesario. También avisará
+    //por alert de los errores de introducción.
+
+    //Comprobar que los campos no están vacíos
+    if (distance == "" || gasPrice == "" || consumption == "") {
+        alert("Alguno de los campos está vacío.");
+        return false;
+    }
+
+    //Reemplazar comas por puntos.
+    distance = distance.replace(',', '.');
+    gasPrice = gasPrice.replace(',', '.');
+    consumption = consumption.replace(',', '.');
+
+
+    //Necesito comprobar que los campos sean únicamente números.
+    if (isNaN(distance) || isNaN(gasPrice) || isNaN(consumption)) {
+        alert("Alguno de los campos introducidos no es un número.");
+        return false;
+    }
+
+    //Devuelvo los textos a double, hasta ahora eran String.
+    distance = parseFloat(distance);
+    gasPrice = parseFloat(gasPrice);
+    consumption = parseFloat(consumption);
+
+    //Si ninguna de las condiciones ha saltado, devuelve true.
+    return true;
+}
+
+function getResults() {
+    //Atrapo la información de los campos
+    getValues();
+
+    //Comprueba los campos e interrumpe el procedimiento si hay alguno incorrecto.
+    if (field_checker() == false) {
+        return;
+    }
+
+    //Realiza el cálculo y almacena los datos resultantes.
     let consumption_1km = consumption / 100;
     let amount_Liters = consumption_1km * distance;
+    let total_Cost = amount_Liters * gasPrice;
 
     //Manda a escribir por pantalla los resultados.
-}
-
-function bring_results(){
-    //Por ahora usaré un alert.
+    let summary = `El coste total para un viaje de ${distance} kms en tu vehículo asciente a ${total_Cost} €, utilizando un total de ${amount_Liters} litros de gasolina.`;
+    alert(summary);
 }
