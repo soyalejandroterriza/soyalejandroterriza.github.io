@@ -3,15 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Terriza Portfolio</title>
+    <div><!-- Background stuff -->
+        <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
+        <script type="x-shader/x-fragment" id="image">
+        precision mediump float;
+        #define SPIN_EASE 0.2
+        #define spin_time 5.
+        #define spin_amount 0.5
+        #define contrast 1.
+    
+        
+        
+        
+        
+        #define colour_1 vec4(0.15, 0.15, 0.15, 1)
+        #define colour_2 vec4(0.1, 0.1, 0.1, 0.5)
+        #define colour_3 vec4(0,0,0,0)
+    
+        uniform vec2 iResolution;
+        uniform float iTime;
+    
+        void main( )
+        {
+          // uncomment to enable pixelated bg
+          // float pixel_size = length(iResolution.xy)/PIXEL_SIZE_FAC;
+          float pixel_size = 1.0;
+          vec2 uv = (floor(gl_FragCoord.xy*(1./pixel_size))*pixel_size - 0.5*iResolution.xy)/length(iResolution.xy) - vec2(0.12, 0.);
+          
+          float uv_len = length(uv);
+          
+          float speed = (spin_time*SPIN_EASE*0.2) + 302.2;
+          float new_pixel_angle = (atan(uv.y, uv.x)) + speed - SPIN_EASE*20.*(1.*spin_amount*uv_len + (1. - 1.*spin_amount));
+          
+          vec2 mid = vec2(0.5, 0.5);
+          uv = (vec2((uv_len * cos(new_pixel_angle) + mid.x), (uv_len * sin(new_pixel_angle) + mid.y)) - mid);
+          
+          uv *= 30.;
+          speed = iTime*(5.);
+          vec2 uv2 = vec2(uv.x+uv.y);
+    
+          for(int i=0; i < 5; i++) {
+            uv2 += sin(max(uv.x, uv.y)) + uv;
+            uv  += 0.5*vec2(cos(5.1123314 + 0.353*uv2.y + speed*0.131121),sin(uv2.x - 0.113*speed));
+            uv  -= 1.0*cos(uv.x + uv.y) - 1.0*sin(uv.x*0.711 - uv.y);
+          }
+          
+          float contrast_mod = (0.25*contrast + 0.5*spin_amount + 1.2);
+          float paint_res =min(2., max(0.,length(uv)*(0.035)*contrast_mod));
+          float c1p = max(0.,1. - contrast_mod*abs(1.-paint_res));
+          float c2p = max(0.,1. - contrast_mod*abs(paint_res));
+          float c3p = 1. - min(1., c1p + c2p);
+    
+          // Output to screen
+          gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
+        }
+      </script>
+        <script>
+          let t = 0;
+          requestAnimationFrame(function update() {
+            t += 1 / 120;
+            requestAnimationFrame(update);
+          });
+          shaderWebBackground.shade({
+            shaders: {
+              image: {
+                uniforms: {
+                  iResolution: (gl, loc, ctx) => gl.uniform2f(loc, ctx.width, ctx.height),
+                  iTime: (gl, loc, ctx) => gl.uniform1f(loc, t)
+                }
+              }
+            }
+          });</script>
+      </div>
 </head>
 <body>
  
     <div class="actualizado">Página en construcción, Abril 2024</div>
     <div class="intro_container">
         
-        <span class="alejandro_terriza">Alejandro Terriza</span>
         <span class="lo_que_soy">Desarrollo web • Desarrollo de videojuegos • Entusiasta automotriz</span>
+        <span class="alejandro_terriza">Alejandro Terriza</span>
         <!--<img class="t3" src="resources/Images/perrito.png">-->
     </div>
     
@@ -19,6 +91,7 @@
         <button id="github_button" class="myButton">My Github</button>
         <button id="linkedin_button" class="myButton">My LinkedIn</button>
         <button id="email_button" class="myButton">Email</button>
+        <button id="itch.io_button" class="myButton">Itch.io</button>
     </div>
 
     <div id="stack_container" class="stack_container"> <!-- Stack -->
@@ -44,27 +117,22 @@
             <span class="project_element_note">Terriza 2024</span>
         </div>
         
-
-        <div class="project_element">
-            <span class="project_element_title">Title</span>
-            <img class="project_element_image" src="resources/Images/Stack placeholder.png">
-            <p class="project_element_description">Project text. Esto es una prueba del proyecto.</p>
-            <p class="project_element_note">Terriza 2024</p>
+        <div class="project_element_container">
+            <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank">Arcade Space Shooter</a></span>
+            <a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank"><img class="project_element_image" src="resources/Images/projects/arcade-space-shooter.png"></a>
+            <p class="project_element_description">Una réplica de "Pew pew", compatible con VR y publicado en Itch.io</p>
+            <span class="project_element_stack">Unity,C#</span>
+            <span class="project_element_note">Terriza 2019</span>
         </div>
 
-        <div class="project_element">
-            <span class="project_element_title">Title</span>
-            <img class="project_element_image" src="resources/Images/Stack placeholder.png">
-            <p class="project_element_description">Project text. Esto es una prueba del proyecto.</p>
-            <p class="project_element_note">Terriza 2024</p>
+        <div class="project_element_container">
+            <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank">Phobos Vector Prime</a></span>
+            <a href="https://soyalejandroterriza.itch.io/phobosvectorprime" target="_blank"><img class="project_element_image" src="resources/Images/projects/phobos-vector-prime.png"></a>
+            <p class="project_element_description">Elementos experimentales para Phobos Vector Prime, participante de Playstation Talents</p>
+            <span class="project_element_stack">Unity,C#, Blender, Photoshop</span>
+            <span class="project_element_note">Gunstar Studio 2019</span>
         </div>
 
-        <div class="project_element">
-            <span class="project_element_title">Title</span>
-            <img class="project_element_image" src="resources/Images/Stack placeholder.png">
-            <p class="project_element_description">Project text. Esto es una prueba del proyecto.</p>
-            <p class="project_element_note">Terriza 2024</p>
-        </div>
     </div>
 
     <div class="credits_container">

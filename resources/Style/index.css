@@ -32,8 +32,11 @@ body {
 /*//////////////////////// Carteles ////////////////////////*/
 .intro_container {
     width: 100%;
-    padding: 5rem 0px;
+    padding-top: 15rem;
     background-color: var(--light_gray);
+
+    display: flex;
+    flex-direction: column;
 }
 
 .actualizado {
@@ -47,17 +50,15 @@ body {
 
 .alejandro_terriza {
     font-family: 'Milker', sans-serif;
-    font-size: 5rem;
     color: var(--light_gray);
+    -webkit-text-stroke: 0.1rem var(--light_black);
 
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 
     transform: scale(1, 0.8);
-
-    -webkit-text-stroke: 0.1rem var(--light_black);
+    margin-top: -2rem;
+    
+    
+    font-size: 5rem;
 }
 
 .lo_que_soy {
@@ -80,7 +81,7 @@ body {
 .mis_proyectos {
     font-family: 'Milker', sans-serif;
     font-size: 5rem;
-    color: #191919;
+    color: transparent;
 
     display: flex;
     text-align: center;
@@ -167,6 +168,7 @@ body {
     width: 10em;
     height: 10em;
     width: 10em;
+    border-radius: 0.5rem;
 }
 
 .project_element_description {
