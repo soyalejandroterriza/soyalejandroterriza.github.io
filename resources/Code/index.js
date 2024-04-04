@@ -1,4 +1,22 @@
+///////////////////////// FUNCIONES /////////////////////////
 
+
+function addTilting() { // Adds the tilting effct
+    function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+    
+    // Prevents addding tilting when is a mobile device.
+    if (isMobileDevice() == true){
+        return;
+    }
+
+    let script = document.createElement("script");
+    script.src = "/resources/Code/vanilla-tilt.js";
+    document.head.appendChild(script);
+}
+
+///////////////////////// EJECUCIÓN /////////////////////////
 
 // Comportamiento del botón GitHub
 document.getElementById("github_button").addEventListener("click", function() {
@@ -25,11 +43,7 @@ document.getElementById("itch.io_button").addEventListener("click", function() {
 });
 
 // Añadir tilting
-let script = document.createElement("script");
-script.src = "/resources/Code/vanilla-tilt.js";
-document.head.appendChild(script);
-
-/* data-tilt data-tilt-reverse="true" data-tilt-scale="1.2" */
+addTilting();
 
 
 
