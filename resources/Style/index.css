@@ -57,7 +57,7 @@ body {
     transform: scale(1, 0.8);
     margin-top: -2rem;
     
-    
+    text-align: center;
     font-size: 5rem;
 }
 
@@ -78,7 +78,7 @@ body {
     transform: scale(1, 0.8);
 }
 
-.mis_proyectos {
+.proyectos_title {
     font-family: 'Milker', sans-serif;
     font-size: 5rem;
     color: transparent;
@@ -91,6 +91,45 @@ body {
     transform: scale(1, 0.8);
 
     -webkit-text-stroke: 0.1rem white;
+}
+
+
+/*//////////////////////// Formación ////////////////////////*/
+
+.formacion_title_container {
+    width: 100%;
+}
+
+.formacion_title {
+    font-family: 'Milker', sans-serif;
+    font-size: 3rem;
+    color: transparent;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(1, 0.8);
+
+    -webkit-text-stroke: 0.1rem white;
+}
+.formacion_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.formacion_label {
+    background-color: rgba(255, 255, 255, 0.519);
+    border-radius: 0.3rem;
+    color: black;
+    padding: 0.5rem;
+    margin: 1rem 0.2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /*//////////////////////// Links ////////////////////////*/
@@ -108,13 +147,13 @@ body {
     margin: 0.7rem;
 
     color: white;
-    background-color: #222A36;
+    background-color: #8f8f8f;
     border: 0px;
     border-radius: 0.5rem;
 }
 
 .myButton:hover {
-    background-color: #303c4d;
+    background-color: #525252;
     cursor: pointer;
 }
 
@@ -164,7 +203,7 @@ body {
 }
 
 .project_element_image {
-    background-color: yellow;
+    
     width: 10em;
     height: 10em;
     width: 10em;
@@ -208,7 +247,7 @@ body {
 }
 
 .stackImage {
-    padding: 2em;
+    /*padding: 2em;*/
 
     width: 3em;
     height: 3em;
@@ -218,29 +257,5 @@ body {
 .credits_container {
     font-size: 0.8em;
     text-align: center;
-    color: white;
-}
-
-/*//////////////////////// Pruebas ////////////////////////*/
-.bocadillo {
-    visibility: hidden;
-    width: 120px;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-    /* Ajusta el margen izquierdo para centrar el bocadillo */
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.contenedor:hover .bocadillo {
-    visibility: visible;
-    opacity: 1;
+    color: rgba(255, 255, 255, 0.697);
 }

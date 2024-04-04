@@ -24,6 +24,13 @@ document.getElementById("itch.io_button").addEventListener("click", function() {
     window.open(url);
 });
 
+// Añadir tilting
+let script = document.createElement("script");
+script.src = "/resources/Code/vanilla-tilt.js";
+document.head.appendChild(script);
+
+/* data-tilt data-tilt-reverse="true" data-tilt-scale="1.2" */
+
 
 
 
