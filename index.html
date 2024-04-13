@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terriza Portfolio</title>
-    <div><!-- Background stuff -->
-        <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
-        <script type="x-shader/x-fragment" id="image">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terriza Portfolio</title>
+  <div><!-- Background stuff -->
+    <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
+    <script type="x-shader/x-fragment" id="image">
         precision mediump float;
         #define SPIN_EASE 0.2
         #define spin_time 5.
@@ -59,117 +60,149 @@
           gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
         }
       </script>
-        <script>
-          let t = 0;
-          requestAnimationFrame(function update() {
-            t += 1 / 120;
-            requestAnimationFrame(update);
-          });
-          shaderWebBackground.shade({
-            shaders: {
-              image: {
-                uniforms: {
-                  iResolution: (gl, loc, ctx) => gl.uniform2f(loc, ctx.width, ctx.height),
-                  iTime: (gl, loc, ctx) => gl.uniform1f(loc, t)
-                }
-              }
+    <script>
+      let t = 0;
+      requestAnimationFrame(function update() {
+        t += 1 / 120;
+        requestAnimationFrame(update);
+      });
+      shaderWebBackground.shade({
+        shaders: {
+          image: {
+            uniforms: {
+              iResolution: (gl, loc, ctx) => gl.uniform2f(loc, ctx.width, ctx.height),
+              iTime: (gl, loc, ctx) => gl.uniform1f(loc, t)
             }
-          });</script>
-      </div>
+          }
+        }
+      });</script>
+  </div>
 </head>
+
 <body>
- 
-    <div class="actualizado">Abril 2024</div>
-    <div class="intro_container">
-        
-        <span class="lo_que_soy">Desarrollo web • Desarrollo de videojuegos • Entusiasta automotriz</span>
-        <span class="alejandro_terriza">Alejandro Terriza</span>
-        <!--<img class="t3" src="resources/Images/perrito.png">-->
-    </div>
+
+  <div class="actualizado">Abril 2024</div>
+  <div class="intro_container">
+
+    <span class="lo_que_soy">Desarrollo web • Desarrollo de videojuegos • Entusiasta automotriz</span>
+    <span class="alejandro_terriza">Alejandro Terriza</span>
+    <!--<img class="t3" src="resources/Images/perrito.png">-->
+  </div>
+
+  <div class="my_links">
+    <button id="github_button" class="myButton">My Github</button>
+    <button id="linkedin_button" class="myButton">My LinkedIn</button>
+    <button id="email_button" class="myButton">Email</button>
+    <button id="itch.io_button" class="myButton">Itch.io</button>
+  </div>
+
+  <div id="stack_container" class="stack_container">
+    <img class="stackImage" src="resources/Images/stack/javascript.png" data-stackImg id="1">
+    <img class="stackImage" src="resources/Images/stack/csharp_unity.png" data-stackImg id="0">
+    <img class="stackImage" src="resources/Images/stack/html_css.png" data-stackImg id="1">
+    <img class="stackImage" src="resources/Images/stack/python.png" data-stackImg id="2">
+    <img class="stackImage" src="resources/Images/stack/java.png" data-stackImg id="0">
+  </div>
+
+  <div class="my_projects_title_container">
+    <span class="proyectos_title">Mis proyectos</span>
+  </div>
+
+  <div class="projects_container">
+
     
-    <div class="my_links">
-        <button id="github_button" class="myButton">My Github</button>
-        <button id="linkedin_button" class="myButton">My LinkedIn</button>
-        <button id="email_button" class="myButton">Email</button>
-        <button id="itch.io_button" class="myButton">Itch.io</button>
+    <div class="project_element_container">
+      <span class="project_element_title"><a href="https://matriculas-provinciales.vercel.app/"
+          target="_blank">Matrículas provinciales</a></span>
+      <a href="https://matriculas-provinciales.vercel.app/" target="_blank"><img data-tilt
+          data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image"
+          src="resources/Images/projects/matriculas.png"></a>
+      <p class="project_element_description">Un proyecto de diseño que reimagina las matrículas provinciales españolas como placas estadounidenses.</p>
+      <span class="project_element_stack">HTML, CSS, JS, Photoshop.</span>
+      <span class="project_element_note">Terriza 2024</span>
     </div>
 
-    <div id="stack_container" class="stack_container">
-        <img class="stackImage" src="resources/Images/stack/javascript.png" data-stackImg id="1">
-        <img class="stackImage" src="resources/Images/stack/csharp_unity.png" data-stackImg id="0">
-        <img class="stackImage" src="resources/Images/stack/html_css.png" data-stackImg id="1">
-        <img class="stackImage" src="resources/Images/stack/python.png" data-stackImg id="2">
-        <img class="stackImage" src="resources/Images/stack/java.png" data-stackImg id="0">
-    </div> 
-    
-    <div class="my_projects_title_container">
-        <span class="proyectos_title">Mis proyectos</span>
+    <div class="project_element_container">
+      <span class="project_element_title"><a href="https://balatro-card-showcase.vercel.app/" target="_blank">Balatro
+          Card Showcase</a></span>
+      <a href="https://balatro-card-showcase.vercel.app/" target="_blank"><img data-tilt data-tilt-reverse="true"
+          data-tilt-glare="true" class="project_element_image"
+          src="resources/Images/projects/balatro-card-showcase.png"></a>
+      <p class="project_element_description">Expositor dinámico de cartas para modders de Balatro.</p>
+      <span class="project_element_stack">HTML,CSS,JS,Ext.Libraries</span>
+      <span class="project_element_note">Terriza 2024</span>
     </div>
 
-    <div class="projects_container">
-
-        <div class="project_element_container">
-            <span class="project_element_title"><a href="https://balatro-card-showcase.vercel.app/" target="_blank">Balatro Card Showcase</a></span>
-            <a href="https://balatro-card-showcase.vercel.app/" target="_blank"><img  data-tilt data-tilt-reverse="true" data-tilt-glare="true" class="project_element_image" src="resources/Images/projects/balatro-card-showcase.png"></a>
-            <p class="project_element_description">Expositor dinámico de cartas para modders de Balatro.</p>
-            <span class="project_element_stack">HTML,CSS,JS,Ext.Libraries</span>
-            <span class="project_element_note">Terriza 2024</span>
-        </div>
-
-        <div class="project_element_container">
-          <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/colorships" target="_blank">Colorships</a></span>
-          <a href="https://soyalejandroterriza.itch.io/colorships" target="_blank"><img  data-tilt data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image" src="resources/Images/projects/colorships.png"></a>
-          <p class="project_element_description">Space Topdown shooter frenético para PC publicado en Itch.io</p>
-          <span class="project_element_stack">Unity,C#, Photoshop</span>
-          <span class="project_element_note">Terriza, Manuel Florido, César Armijo 2020</span>
-      </div>
-        
-        <div class="project_element_container">
-            <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank">Arcade Space Shooter</a></span>
-            <a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank"><img  data-tilt data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image" src="resources/Images/projects/arcade-space-shooter.png"></a>
-            <p class="project_element_description">Una réplica de "Pew pew", compatible con VR y publicado en Itch.io</p>
-            <span class="project_element_stack">Unity,C#</span>
-            <span class="project_element_note">Terriza 2019</span>
-        </div>
-
-        <div class="project_element_container">
-            <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/phobosvectorprime" target="_blank">Phobos Vector Prime</a></span>
-            <a href="https://soyalejandroterriza.itch.io/phobosvectorprime" target="_blank"><img  data-tilt  data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image" src="resources/Images/projects/phobos-vector-prime.png"></a>
-            <p class="project_element_description">Elementos experimentales para Phobos Vector Prime, participante de Playstation Talents</p>
-            <span class="project_element_stack">Unity,C#, Blender, Photoshop</span>
-            <span class="project_element_note">Gunstar Studio 2019</span>
-        </div>
-
+    <div class="project_element_container">
+      <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/colorships"
+          target="_blank">Colorships</a></span>
+      <a href="https://soyalejandroterriza.itch.io/colorships" target="_blank"><img data-tilt data-tilt-glare="true"
+          data-tilt-reverse="true" class="project_element_image" src="resources/Images/projects/colorships.png"></a>
+      <p class="project_element_description">Space Topdown shooter frenético para PC publicado en Itch.io</p>
+      <span class="project_element_stack">Unity,C#, Photoshop</span>
+      <span class="project_element_note">Terriza, Manuel Florido, César Armijo 2020</span>
     </div>
 
-    <div>
-      <hr>
+    <div class="project_element_container">
+      <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/arcadespaceshooter"
+          target="_blank">Arcade Space Shooter</a></span>
+      <a href="https://soyalejandroterriza.itch.io/arcadespaceshooter" target="_blank"><img data-tilt
+          data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image"
+          src="resources/Images/projects/arcade-space-shooter.png"></a>
+      <p class="project_element_description">Una réplica de "Pew pew", compatible con VR y publicado en Itch.io</p>
+      <span class="project_element_stack">Unity,C#</span>
+      <span class="project_element_note">Terriza 2019</span>
     </div>
 
-    <div class="formacion_title_container">
-      <span class="formacion_title">Formacion</span>
+    <div class="project_element_container">
+      <span class="project_element_title"><a href="https://soyalejandroterriza.itch.io/phobosvectorprime"
+          target="_blank">Phobos Vector Prime</a></span>
+      <a href="https://soyalejandroterriza.itch.io/phobosvectorprime" target="_blank"><img data-tilt
+          data-tilt-glare="true" data-tilt-reverse="true" class="project_element_image"
+          src="resources/Images/projects/phobos-vector-prime.png"></a>
+      <p class="project_element_description">Elementos experimentales para Phobos Vector Prime, participante de
+        Playstation Talents</p>
+      <span class="project_element_stack">Unity,C#, Blender, Photoshop</span>
+      <span class="project_element_note">Gunstar Studio 2019</span>
     </div>
 
-    <div class="formacion_container">
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">FPE: Introducción a la programación web</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Java con aplicaciones del mundo real</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Python Total</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">CFGS: Animación 3D, Videojuegos y entornos interactivos</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">CFGM: Sistemas microinformáticos y redes</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Git y Github completo desde cero</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Desarrollo de videojuegos con Unity</span>
-      <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Programación de videojuegos con Unity y C#</span>
-    </div>
+  </div>
+
+  <div>
+    <hr>
+  </div>
+
+  <div class="formacion_title_container">
+    <span class="formacion_title">Formacion</span>
+  </div>
+
+  <div class="formacion_container">
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">FPE: Introducción a la
+      programación web</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Java con aplicaciones del
+      mundo real</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Python Total</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">CFGS: Animación 3D,
+      Videojuegos y entornos interactivos</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">CFGM: Sistemas
+      microinformáticos y redes</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Git y Github completo desde
+      cero</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Desarrollo de videojuegos
+      con Unity</span>
+    <span class="formacion_label" data-tilt data-tilt-reverse="true" data-tilt-glare="true">Programación de videojuegos
+      con Unity y C#</span>
+  </div>
 
 
 
-    <div class="credits_container">
-        <hr>
-        <p>Terriza 2024</p>
-        <p>Background by Xemantic</p>
-        <p>Tilting by micku7zu</p>
-    </div>
-    
+  <div class="credits_container">
+    <hr>
+    <p>Terriza 2024</p>
+    <p>Background by Xemantic</p>
+    <p>Tilting by micku7zu</p>
+  </div>
+
 
 
 
@@ -185,4 +218,5 @@
 
 <!-- Bootstrap JS -->
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+
 </html>

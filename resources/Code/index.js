@@ -31,9 +31,13 @@ document.getElementById("linkedin_button").addEventListener("click", function() 
 });
 
 // Comportamiento del botón Email
-document.getElementById("linkedin_button").addEventListener("click", function() {
+document.getElementById("email_button").addEventListener("click", function() {
+    document.getElementById("email_button").innerHTML = "soyalejandroterriza@gmail.com";
+    
+    /*var url = "mailto:{soyalejandroterriza@gmail.com}?subject={Hola!}";*/
     var url = "mailto:soyalejandroterriza@gmail.com";
     window.open(url);
+    
 });
 
 // Comportamiento del botón Itch.io
