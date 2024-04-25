@@ -114,11 +114,21 @@ body {
 
     -webkit-text-stroke: 0.1rem white;
 }
-.formacion_container {
+
+/*.formacion_container {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}*/
+
+.formacion_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Esto permitirá que los elementos se envuelvan a una nueva fila */
+    justify-content: space-between;
+    flex-direction: row; /* Por defecto es row, pero es bueno especificarlo para mayor claridad */
 }
+
 .formacion_label {
     background-color: rgba(255, 255, 255, 0.519);
     border-radius: 0.3rem;
